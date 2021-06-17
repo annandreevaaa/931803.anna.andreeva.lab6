@@ -1,0 +1,56 @@
+﻿@model IEnumerable<WebApplication6.Models.Post>
+    <h1>@ViewData["Title"]</h1>
+
+    <p>
+        <a asp-action="Create" asp-route-id=@ViewBag.TopicId>Create Post</a> |
+        <a asp-controller="Topics" asp-action="Edit" asp-route-id=@ViewBag.TopicId>Edit Topic</a> |
+        <a asp-controller="Topics" asp-action="Delete" asp-route-id=@ViewBag.TopicId>Delete Topic</a>
+    </p>
+
+    <table class="table">
+
+        @foreach (var item in Model)
+        {
+            <thead>
+                <tr>
+                    <td>
+                        
+                        @Html.DisplayFor(modelItem => item.AccountCreatorName)
+                        @Html.DisplayFor(modelItem => item.DateCreate)
+                        (edited @Html.DisplayFor(modelItem => item.DateEdit) )
+                        <a asp-controller="Posts" asp-action="Edit" asp-route-id=@item.Id>Edit</a> |
+                        <a asp-controller="Posts" asp-action="Delete" asp-route-id=@item.Id>Delete</a> |
+                        <a asp-controller="Posts" asp-action="Edit" asp-route-id=@item.Id>Attach</a> 
+                    </td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <h>
+                            @Html.DisplayFor(modelItem => item.Title)
+                        </h>
+                        <p>
+                            @Html.DisplayFor(modelItem => item.Text)
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td style="border-top:hidden">
+                        @if (item.Picture1 != null)
+                        {
+                           <img style='width:33%; height:250px;' src="data:image/jpeg;base64,@(Convert.ToBase64String(item.Picture1))" />
+                        }
+                        @if (item.Picture2 != null)
+                        {
+                           <img style='width:33%; height:250px;' src="data:image/jpeg;base64,@(Convert.ToBase64String(item.Picture2))" />
+                        }
+                        @if (item.Picture3 != null)
+                        {
+                           <img style='width:33%; height:250px;' src="data:image/jpeg;base64,@(Convert.ToBase64String(item.Picture3))" />
+                        }
+                  </td>
+                    </tr>
+            </tbody>
+        }
+    </table>

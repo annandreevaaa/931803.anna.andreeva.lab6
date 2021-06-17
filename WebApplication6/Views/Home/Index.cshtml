@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Mockups";
+}
+
+<div class="text-left">
+    <h1 class="display-4">Mockups</h1>
+
+</div>
+<ul>
+    <li><a asp-area="" asp-controller="Forums" asp-action="AllForums">All Forums</a></li>
+    <li><a asp-area="" asp-controller="Topics" asp-action="NewTopics">Single Forum</a></li>
+    <li><a asp-area="" asp-controller="Posts" asp-action="Index">Single Topic</a></li>
+    <li><a asp-area="" asp-controller="Folders" asp-action="Index" asp-route-id=1>File_System</a></li>
+</ul>
+@if (User.IsInRole("admin"))
+{
+    <div class="text-left">
+        <h1 class="display-4">Admin Menu</h1>
+    </div>
+    <ul>
+        <li><a asp-area="" asp-controller="Forums" asp-action="Index">Edit All Forums</a></li>
+        <li><a asp-area="" asp-controller="Topics" asp-action="Index">Edit Single Forum</a></li>
+        <li><a asp-area="" asp-controller="Posts" asp-action="Index">Edit Single Topic</a></li>
+        <li><a asp-area="" asp-controller="Folders" asp-action="Index" asp-route-id=1>Edit File_System</a></li>
+        <li><a asp-area="" asp-controller="Pictures" asp-action="Index">Edit Pictures</a></li>
+    </ul>
+}

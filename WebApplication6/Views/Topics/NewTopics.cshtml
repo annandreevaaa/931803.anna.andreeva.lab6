@@ -1,0 +1,30 @@
+﻿@model IEnumerable<WebApplication6.Models.Topic>
+
+
+    <h1>@ViewData["ForumName"]</h1>
+    <span>@ViewData["ForumDescription"]</span>
+<p>
+    <a asp-action="Create" asp-route-id=@ViewBag.ForumId>Create New Topic</a>
+</p>
+<table class="table">
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    <a asp-controller="Posts" asp-action="Index" asp-route-id=@item.Id>@Html.DisplayFor(modelItem => item.Name)</a><br>
+                    @Html.DisplayFor(modelItem => item.AccountCreatorName)
+                    @Html.DisplayFor(modelItem => item.DateCreate)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Reply) Reply
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AccountEditorName)
+                    <br>
+                    @Html.DisplayFor(modelItem => item.DateCreate)
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
